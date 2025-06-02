@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, redirect, session, send_from_directory, url_for
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
-import os, sqlite3
+import os
+import sqlite3
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 app.config['UPLOAD_FOLDER'] = 'uploads'
-
 
 # Initialize database
 def init_db():
@@ -16,11 +16,9 @@ def init_db():
                         username TEXT UNIQUE,
                         password TEXT)''')
 
-
 @app.route('/')
 def index():
     return redirect('/login')
-
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -36,7 +34,6 @@ def register():
         except:
             return "User already exists!"
     return render_template('register.html')
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -56,7 +53,6 @@ def login():
                 return "Invalid credentials!"
     return render_template('login.html')
 
-
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     if 'user' not in session:
@@ -73,7 +69,6 @@ def upload_file():
 
     return render_template('upload.html')
 
-
 @app.route('/files')
 def list_files():
     if 'user' not in session:
@@ -83,7 +78,6 @@ def list_files():
     files = os.listdir(user_folder)
     return render_template('files.html', files=files)
 
-
 @app.route('/download/<filename>')
 def download_file(filename):
     if 'user' not in session:
@@ -92,13 +86,13 @@ def download_file(filename):
     user_folder = os.path.join(app.config['UPLOAD_FOLDER'], session['user'])
     return send_from_directory(user_folder, filename, as_attachment=True)
 
-
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect('/login')
 
 
+# Run the app
 if __name__ == '__main__':
     init_db()
     app.run(debug=True)
