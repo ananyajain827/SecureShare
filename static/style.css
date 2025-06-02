@@ -1,0 +1,78 @@
+/* style.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    color: #4a4a4a;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="file"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+button {
+    background: #5a67d8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #434190;
+}
+
+a {
+    display: block;
+    margin-top: 1rem;
+    color: #4c51bf;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 10px 0;
+}
+
+ul li a {
+    color: #2d3748;
+    font-weight: bold;
+}
